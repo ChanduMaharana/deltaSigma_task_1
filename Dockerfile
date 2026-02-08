@@ -1,5 +1,8 @@
-# Use official Java 17 image
+# Use Java 17
 FROM eclipse-temurin:17-jdk
+
+# Install Maven
+RUN apt-get update && apt-get install -y maven
 
 # Set working directory
 WORKDIR /app
@@ -8,7 +11,7 @@ WORKDIR /app
 COPY . .
 
 # Build the application
-RUN ./mvnw clean package -DskipTests
+RUN mvn clean package -DskipTests
 
 # Expose port
 EXPOSE 8080
