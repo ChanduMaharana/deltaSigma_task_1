@@ -24,7 +24,10 @@ public class ItemController {
     public ResponseEntity<Item> addItem(@Valid @RequestBody Item item) {
         return ResponseEntity.ok(itemService.addItem(item));
     }
-
+    @GetMapping("/")
+    public String status() {
+        return "Item API is running. Please refer README for usage.";
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getItem(@PathVariable Long id) {
